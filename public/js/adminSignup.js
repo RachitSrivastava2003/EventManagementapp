@@ -2,29 +2,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('forms');
     const errorMessageElement = document.getElementById('error-message');
 
-    // Handle form submission
     form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent the form from submitting normally
+        e.preventDefault();
 
         const name = document.getElementById('name').value;
         const gmail = document.getElementById('gmail').value;
         const password = document.getElementById('password').value;
 
-        // Form validation
         if (!name || !gmail || !password) {
             errorMessageElement.textContent = 'Please fill in all fields.';
             errorMessageElement.style.display = 'block';
             return;
         }
 
-        // Prepare data to send to the server
         const formData = {
             name: name,
             gmail: gmail,
             password: password
         };
 
-        // Send data to the server using Fetch API
         fetch('/adminsignup', {
             method: 'POST',
             headers: {
@@ -34,11 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => response.json())
         .then(data => {
-            // Handle the response from the server
             if (data.success) {
-                window.location.href = './admin-dashboard';  // Redirect to admin dashboard
+                window.location.href = './admin-dashboard'; 
             } else {
-                errorMessageElement.textContent = data.message;  // Display error message from server
+                errorMessageElement.textContent = data.message;
                 errorMessageElement.style.display = 'block';
             }
         })
@@ -48,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Clear error message when the user starts typing
     document.getElementById('name').addEventListener('input', () => errorMessageElement.style.display = 'none');
     document.getElementById('gmail').addEventListener('input', () => errorMessageElement.style.display = 'none');
     document.getElementById('password').addEventListener('input', () => errorMessageElement.style.display = 'none');

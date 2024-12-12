@@ -127,31 +127,25 @@ app.get('/adminsignup',(req,res)=>{
 app.post('/adminsignup', (req, res) => {
     const { name, gmail, password } = req.body;
 
-    // Validate form fields
     if (!name || !gmail || !password) {
         return res.json({ success: false, message: 'All fields are required' });
     }
 
-    // Check if there is already an admin in the database
     const checkAdminQuery = 'SELECT COUNT(*) AS adminCount FROM user WHERE status = "admin"';
     db.query(checkAdminQuery, (err, results) => {
         if (err) {
             return res.json({ success: false, message: 'Database error. Please try again later.' });
         }
 
-        // If an admin already exists
         if (results[0].adminCount > 0) {
             return res.json({ success: false, message: 'Only one admin can be created.' });
         }
 
-        // Insert the new admin into the database
         const insertQuery = 'INSERT INTO user (name, gmail, password, status) VALUES (?, ?, ?, ?)';
         db.query(insertQuery, [name, gmail, password, 'admin'], (err, result) => {
             if (err) {
                 return res.json({ success: false, message: 'Database error. Please try again later.' });
             }
-
-            // Successfully created the admin
             res.json({ success: true, message: 'Admin created successfully!' });
         });
     });
@@ -164,12 +158,10 @@ app.get('/usersignup',(req,res)=>{
 app.post('/usersignup', (req, res) => {
     const { name, gmail, password } = req.body;
 
-    // Validation: Ensure all fields are provided
     if (!name || !gmail || !password) {
         return res.json({ success: false, message: 'All fields are required' });
     }
 
-    // Query to check if the user with the same gmail already exists
     const checkUserQuery = 'SELECT * FROM user WHERE gmail = ?';
     db.query(checkUserQuery, [gmail], (err, results) => {
         if (err) {
@@ -180,14 +172,12 @@ app.post('/usersignup', (req, res) => {
             return res.json({ success: false, message: 'User with this email already exists.' });
         }
 
-        // Query to insert new user into the database
         const insertQuery = 'INSERT INTO user ( gmail, password,username, status) VALUES (?, ?, ?, ?)';
         db.query(insertQuery, [gmail, password,name, 'user'], (err, result) => {
             if (err) {
                 return res.json({ success: false, message: 'Database error. Please try again later.' });
             }
 
-            // Successfully created user
             res.json({ success: true, message: 'User created successfully!' });
         });
     });
@@ -199,12 +189,10 @@ app.get("/vendersignup",(req,res)=>{
 app.post('/vendersignup', (req, res) => {
     const { name, gmail, password, category } = req.body;
 
-    // Validation: Ensure all fields are provided
     if (!name || !gmail || !password || !category) {
         return res.json({ success: false, message: 'All fields are required' });
     }
 
-    // Query to check if a user or vendor with the same email already exists
     const checkEmailQuery = 'SELECT * FROM user WHERE gmail = ?';
     db.query(checkEmailQuery, [gmail], (err, results) => {
         if (err) {
@@ -215,14 +203,11 @@ app.post('/vendersignup', (req, res) => {
             return res.json({ success: false, message: 'Email already registered.' });
         }
 
-        // Query to insert new vendor into the database
         const insertVendorQuery = 'INSERT INTO user (username, gmail, password, category, status) VALUES (?, ?, ?, ?, ?)';
         db.query(insertVendorQuery, [name, gmail, password, category, 'vendor'], (err, result) => {
             if (err) {
                 return res.json({ success: false, message: 'Database error. Please try again later.' });
             }
-
-            // Successfully created vendor
             res.json({ success: true, message: 'Vendor created successfully!' });
         });
     });
