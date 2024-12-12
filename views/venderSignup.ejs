@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor SignUp</title>
+    <link rel="stylesheet" href="/css/venderSignup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top"></div>
+        <div class="last flex">
+            <div class="last-top flex">
+                <h1>Event Management System</h1>
+            </div>
+            <div class="last-last flex">
+                <div class="info flex">
+                    <form id="forms" class="flex">
+                        <h2>Vendor SignUp</h2>
+                        <div class="inputs flex">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Vendor Name" required>
+                        </div>
+                        <div class="inputs flex">
+                            <label for="gmail">Email</label>
+                            <input type="email" name="gmail" id="gmail" placeholder="Vendor Email" required>
+                        </div>
+                        <div class="inputs flex">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Vendor Password" required>
+                        </div>
+                        <div class="inputs flex">
+                            <label for="category">Category</label>
+                            <select name="category" id="category" required>
+                                <option value="catering">Catering</option>
+                                <option value="florist">Florist</option>
+                                <option value="decoration">Decoration</option>
+                                <option value="lighting">Lighting</option>
+                            </select>
+                        </div>
+                        <div id="error-message" style="color: red; display: none; margin-top: 10px;"></div>
+                        <div class="btns flex">
+                            <button type="button" onclick="window.location.href='./home'">Cancel</button>
+                            <button type="submit">SignUp</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/venderSignup.js"></script>
+</body>
+</html>

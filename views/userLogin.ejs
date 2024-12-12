@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/css/adminLogin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top"></div>
+        <div class="last flex">
+            <div class="last-top flex">
+                <h1>Event Management System</h1>
+            </div>
+            <div class="last-last flex">
+                <div class="info flex">
+                    <form id="forms" class="flex">
+                        <h2>User Login</h2>
+                        <div class="inputs flex">
+                            <label for="userid">User Id</label>
+                            <input type="text" name="userid" id="userid" placeholder="User Id">
+                        </div>
+                        <div class="inputs flex">
+                            <label for="password">Password</label>
+                            <input type="text" name="password" id="password" placeholder="User Password">
+                        </div>
+                        <div id="error-message" style="color: red; display: none; margin-top: 10px;"></div>
+                        <div class="btns flex">
+                            <button onclick="window.location.href='./home'">Cancel</button>
+                            <button type="button">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/userLogin.js"></script>
+</html>

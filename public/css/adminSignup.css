@@ -1,0 +1,105 @@
+*{
+    margin:0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    /* border:1px solid green; */
+    height:100vh;
+}
+.top{
+    height:8vh;
+    background-color:darkblue;
+    width:100%;
+}
+.last{
+    /* border:1px solid green; */
+    height:92vh;
+    flex-direction: column;
+}
+.last-top{
+    /* border:1px solid green; */
+    height:15%;
+    width: 100%;
+}
+.last-top h1{
+    /* border: 1px solid red; */
+    padding:10px 60px;
+    background-color: royalblue;
+    color: white;
+    border-radius: 4px;
+}
+.last-last{
+    /* border:1px solid green; */
+    height:75%;
+    width: 100%;
+}
+.info{
+    /* border:1px solid green; */
+    width:55%;
+    height:90%;
+    flex-direction: column;
+}
+
+#forms{
+    height:100%;
+    width: 100%;
+    border:1px solid rgba(0, 0, 139, 0.188);
+    /* justify-content: space-evenly; */
+    gap:40px;
+    flex-direction: column;
+border-radius: 8px;
+background-color: royalblue;
+}
+#forms h2{
+    font-size: 2rem;
+    /* color: rgba(0, 0, 139, 0.779); */
+    color: white;
+    font-weight: 900;
+}
+
+.inputs {
+    /* border:1px solid red; */
+    height:6vh;
+    width:70%;
+    gap: 50px;
+}
+
+.inputs label{
+    /* border: 1px solid red; */
+    /* background-color: royalblue; */
+    background-color: white;
+    color: royalblue;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.inputs input{
+    height:5vh;
+    border:1px solid royalblue;
+    color: royalblue;
+    border-radius:6px;
+    width:40%;
+    outline: none;
+    padding: 12px;
+}
+
+.btns{
+    /* border: 1px solid red; */
+    width:40%;
+    height:10%;
+    gap:50px;
+}
+.btns button{
+    padding:12px 20px;
+    border:none;
+    outline: none;
+    background-color:white;
+    color: royalblue;
+    border-radius:12px;
+}
