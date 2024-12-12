@@ -1,4 +1,5 @@
-document.getElementById('forms').addEventListener('click', () => {
+document.getElementById('forms').addEventListener('click', (e) => {
+    e.preventDefault();
     const userid = document.getElementById('userid').value;
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('error-message');
