@@ -2,7 +2,7 @@
     margin:0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: "Poppins", serif;
+    font-family: Arial, sans-serif;
 }
 .flex{
     display: flex;
@@ -13,9 +13,11 @@
     /* border:1px solid green; */
     height:100vh;
 }
+
 .last{
+    /* border:1px solid green; */
     height:60vh;
-    width:55%;
+    width:60%;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     flex-direction: column;
@@ -23,24 +25,25 @@
 .last-top{
     /* border:1px solid green; */
     height:15%;
-    width: 95%;
+    width: 98%;
     background-color: royalblue;
     border-radius: 8px;
 }
+
 .last-top h1{
-    /* border: 1px solid red; */
     padding:10px 60px;
     color: white;
 }
+
 .last-last{
     /* border:1px solid green; */
-    height:80%;
+    height:60%;
     width: 95%;
 }
 .info{
     /* border:1px solid green; */
-    width:90%;
-    height:95%;
+    width:65%;
+    height:80%;
     flex-direction: column;
 }
 
@@ -49,34 +52,33 @@
     width: 100%;
     /* border:1px solid rgba(0, 0, 139, 0.188); */
     /* justify-content: space-evenly; */
-    gap:50px;
+    gap:80px;
     flex-direction: column;
-    /* border-radius: 8px; */
-    /* background-color: royalblue; */
 }
-#forms h2{
-    font-size: 2rem;
+#forms>h1{
+    font-size: 2.5rem;
     /* color: rgba(0, 0, 139, 0.779); */
-    color: royalblue;
-    font-weight: 600;
+    color:royalblue;
 }
 
 .inputs {
     /* border:1px solid red; */
     height:6vh;
-    width:80%;
-    gap: 80px;
+    width:70%;
+    gap: 50px;
 }
 
 .inputs label{
-    background-color: #007BFF;
-    color: white;
+    /* border: 1px solid red; */
+    /* background-color: royalblue; */
+    background-color: white;
+    color: royalblue;
     border-radius: 6px;
     padding: 10px;
 }
 
 .inputs input{
-    height:5.5vh;
+    height:5vh;
     border:1px solid royalblue;
     color: royalblue;
     border-radius:6px;
@@ -97,7 +99,7 @@
     color: white;
     background-color: #007BFF;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }

@@ -1,5 +1,5 @@
-document.getElementById('forms').addEventListener('click', (e) => {
-    e.preventDefault()
+document.getElementById('forms').addEventListener('submit', (e) => {
+    e.preventDefault();
     const userid = document.getElementById('userid').value;
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('error-message');
@@ -18,7 +18,7 @@ document.getElementById('forms').addEventListener('click', (e) => {
         password: password
     };
 
-    fetch('/venderlogin', {
+    fetch('/userlogin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ document.getElementById('forms').addEventListener('click', (e) => {
     .then(data => {
         if (data.success) {
             alert('Login successful!');
-            window.location.href = '/home';
+            window.location.href = '/userhome';
         } else {
             errorMessage.textContent = data.message || 'Invalid credentials';
             errorMessage.style.display = 'block';

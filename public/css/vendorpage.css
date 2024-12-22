@@ -1,0 +1,91 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(to bottom, #e3e3e3, #f9f9f9);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3366cc;
+    color: white;
+    padding: 15px 30px;
+}
+
+.header h2 {
+    font-size: 24px;
+}
+
+.btn-nav {
+    background-color: white;
+    color: #3366cc;
+    border: 2px solid #3366cc;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-nav:hover {
+    background-color: #3366cc;
+    color: white;
+}
+
+/* Vendor Cards */
+.vendor-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+
+.card {
+    background-color: #3366cc;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 15px;
+    font-size:0.7em;
+}
+
+.shop-btn {
+    background-color: white;
+    color: #3366cc;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.shop-btn:hover {
+    background-color: #25499e;
+    color: white;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}

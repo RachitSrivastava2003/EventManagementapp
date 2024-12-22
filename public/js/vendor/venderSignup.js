@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = './vendor-dashboard';
+                window.location.href = '/venderlogin';
             } else {
                 errorMessageElement.textContent = data.message;  
                 errorMessageElement.style.display = 'block';

@@ -1,0 +1,88 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(to bottom, #e3e3e3, #f9f9f9);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+.header {
+    background-color: #3366cc;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+}
+
+/* Main Layout */
+main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+/* Drop-down Section */
+.dropdown {
+    background-color: #a3c5f7;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.dropdown ul {
+    list-style: none;
+}
+
+.dropdown li {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+/* Menu Buttons */
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    background-color: #3366cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #25499e;
+}
+
+/* LogOut Button */
+.logout {
+    margin-top: 20px;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}

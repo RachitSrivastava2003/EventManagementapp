@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <link rel="stylesheet" href="/css/vendoritem.css">
+</head>
+<body>
+    <div class="container flex">
+        <div class="bottom">
+            <nav class="navbar flex">
+                <div class="vendor-name"><%= vendorName%></div>
+                <div class="nav-buttons">
+                    <button class="btn nav-btn">Product Status</button>
+                    <button class="btn nav-btn">Request Item</button>
+                    <button onclick="window.location.href='/additem/<%=vendorid%>'" class="btn nav-btn">Add Product</button>
+                    <button onclick="window.location.href='/home'" class="btn nav-btn logout">Logout</button>
+                </div>
+            </nav>
+            <div class="products">
+                <h2>Product Details</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Image</th>
+                            <th>Product Name</th>
+                            <th>Product Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(product of products){%>
+                            <tr>
+                                <td><%=product.image%></td>
+                                <td><%=product.productname%></td>
+                                <td><%=product.price%>Rs/-</td>
+                                <td class="action-buttons">
+                                    <button class="delete">Delete</button>
+                                    <button class="update">Update</button>
+                                </td>
+                            </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

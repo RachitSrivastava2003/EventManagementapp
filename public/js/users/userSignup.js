@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = './user-dashboard'; 
+                window.location.href = './userlogin'; 
             } else {
                 errorMessageElement.textContent = data.message; 
                 errorMessageElement.style.display = 'block';

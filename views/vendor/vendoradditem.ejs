@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard</title>
+    <link rel="stylesheet" href="/css/vendoradditem.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="welcome">
+                Welcome &nbsp; <%=vendorName%>
+            </div>
+            <div class="buttons">
+                <button>Product Status</button>
+                <button>Request Item</button>
+                <button onclick="window.location.href='/vendoritem/<%=vendorid%>'">View Product</button>
+                <button onclick="window.location.href='/home'">Log Out</button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Form Section -->
+             <form class="form-section" id="addProductForm">
+                <h3>Add New Product</h3>
+                <input type="text" placeholder="Product Name">
+                <input type="number" placeholder="Product Price">
+                <input type="file" placeholder="Product Image">
+                <input type="hidden" id="id" value="<%=vendorid%>">
+                <button type="submit">Add The Product</button>
+                <div id="error-message" style="color: red; display: none;"></div>
+             </form>
+
+            <!-- Product Table Section -->
+            <div class="product-section">
+                <h3>Product Details</h3>
+                <table class="product-table">
+                    <tr>
+                        <th>Product Image</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Action</th>
+                    </tr>
+                    <%for(product of products){%>
+                        <tr>
+                            <td><%=product.image%></td>
+                            <td><%=product.productname%></td>
+                            <td><%=product.price%>Rs/-</td>
+                            <td class="action-buttons">
+                                <button class="delete">Delete</button>
+                                <button class="update">Update</button>
+                            </td>
+                        </tr>
+                    <%}%>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/vendor/vendoradditem.js"></script>
+</html>

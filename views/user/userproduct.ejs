@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= vendorName%>Products</title>
+    <link rel="stylesheet" href="/css/userproduct.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo"><%=vendorName%> Dashboard</div>
+            <div class="nav-buttons">
+                <button class="nav-btn">Home</button>
+                <button class="nav-btn">LogOut</button>
+            </div>
+        </header>
+
+        <!-- Content Section -->
+        <section class="content">
+            <h1 class="welcome-text">Welcome, <%=vendorName%>!</h1>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn">Product Status</button>
+                <button class="action-btn">Request Item</button>
+                <button class="action-btn">View Product</button>
+            </div>
+
+            <!-- Products Section -->
+            <div class="product-cards">
+                <%for(product of products){%>                
+                    <div class="product-card">
+                        <h3><%=product.productname%></h3>
+                        <p><%=product.price%></p>
+                        <button class="btn-cart" type="button" onclick="window.location.href='/usercart'">Add to Cart</button>
+                    </div>
+                <%}%>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/userpage.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>WELCOME USER</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Left Drop-down -->
+        <div class="dropdown">
+            <p>Drop Down</p>
+            <ul>
+                <li>Catering</li>
+                <li>Florist</li>
+                <li>Decoration</li>
+                <li>Lighting</li>
+            </ul>
+        </div>
+
+        <!-- Menu Buttons -->
+        <div class="menu">
+            <button onclick="window.location.href='./vendorhome'" class="btn" >Vendor</button>
+            <button onclick="window.location.href='./usercart'" class="btn">Cart</button>
+            <button class="btn">Guest List</button>
+            <button class="btn">Order Status</button>
+        </div>
+
+        <!-- LogOut Button -->
+        <div class="logout">
+            <button onclick="window.location.href='./home'" class="btn logout-btn">LogOut</button>
+        </div>
+    </main>
+</body>
+</html>

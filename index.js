@@ -41,16 +41,20 @@ db.connect((err) => {
     console.log('Connected to the MySQL database.');
 });
 // ================================================================================
+app.get('/',(req,res)=>{
+    res.render('home.ejs');
+})
 app.get('/home',(req,res)=>{
     res.render('home.ejs');
 })
 // ==============================================================================
 app.get("/adminlogin",(req,res)=>{
-    res.render("adminLogin.ejs");
+    res.render("admin/adminLogin.ejs");
 });
 
 app.post('/adminlogin', (req, res) => {
     const { userid, password } = req.body;
+    // console.log(userid);
 
     if (!userid || !password) {
         return res.status(400).json({ success: false, message: 'Please provide both User ID and Password' });
@@ -71,7 +75,7 @@ app.post('/adminlogin', (req, res) => {
 });
 // ======================================================================
 app.get("/userlogin",(req,res)=>{
-    res.render("userLogin.ejs");
+    res.render("user/userLogin.ejs");
 });
 
 app.post('/userlogin', (req, res) => {
@@ -96,12 +100,12 @@ app.post('/userlogin', (req, res) => {
 });
 // ===================================================================================
 app.get("/venderlogin",(req,res)=>{
-    res.render("venderLogin.ejs");
+    res.render("vendor/venderLogin.ejs");
 });
 
 app.post('/venderlogin', (req, res) => {
     const { userid, password } = req.body;
-    console.log(userid,password)
+    // console.log(userid,password)
     if (!userid || !password) {
         return res.status(400).json({ success: false, message: 'Please provide both User ID and Password' });
     }
@@ -121,7 +125,7 @@ app.post('/venderlogin', (req, res) => {
 });
 // ====================================================================
 app.get('/adminsignup',(req,res)=>{
-    res.render("adminSignup.ejs");
+    res.render("admin/adminSignup.ejs");
 })
 
 app.post('/adminsignup', (req, res) => {
@@ -152,7 +156,7 @@ app.post('/adminsignup', (req, res) => {
 });
 // ===============================================================
 app.get('/usersignup',(req,res)=>{
-    res.render("userSignup.ejs");
+    res.render("user/userSignup.ejs");
 })
 
 app.post('/usersignup', (req, res) => {
@@ -184,10 +188,12 @@ app.post('/usersignup', (req, res) => {
 });
 // ==============================================================
 app.get("/vendersignup",(req,res)=>{
-    res.render("venderSignup");
+    res.render("vendor/venderSignup");
 })
 app.post('/vendersignup', (req, res) => {
     const { name, gmail, password, category } = req.body;
+
+    console.log(name,gmail);
 
     if (!name || !gmail || !password || !category) {
         return res.json({ success: false, message: 'All fields are required' });
@@ -212,3 +218,133 @@ app.post('/vendersignup', (req, res) => {
         });
     });
 });
+// =========================================================================================
+app.get("/vendorhomepage/:id1",(req,res)=>{
+    const Id = req.params.id1;
+
+    const q = `select userid FROM user WHERE gmail = ? `;
+
+    db.query(q,Id,(err,result)=>{
+        if (err) {
+            return res.json({ success: false, message: 'Database error. Please try again later.' });
+        }
+        res.render("vendor/vendorhomepage",{vendorId:result[0].userid});
+    });
+
+})
+// =========================================================================================
+app.get("/additem/:id1",(req,res)=>{
+    const vendorId = req.params.id1;
+
+    const q = `select username FROM user WHERE userid = ? `;
+    const q1 = `select * from vendor WHERE vendorid = ? `;
+    try{
+        db.query(q,vendorId,(err,result)=>{
+            if (err) {
+                return res.json({ success: false, message: 'Database error. Please try again later.' });
+            }
+            db.query(q1,vendorId,(err,result1)=>{
+                if (err) {
+                    return res.json({ success: false, message: 'Database error. Please try again later.' });
+                }
+                res.render("vendor/vendoradditem.ejs",{vendorid:vendorId,vendorName:result[0].username ,products:result1});
+            })
+        });
+    }catch(error){
+        return res.json({ success: false, message: error});
+    }
+});
+
+app.post('/additem',(req, res) => {
+    const { productname, price , id } = req.body;
+    // console.log(productname,price,id)
+    if (!productname || !price || !id) {
+        return res.status(400).json({ success: false, message: 'All fields are required!' });
+    }
+
+    const query = 'INSERT INTO vendor (vendorid, productname, price, image) VALUES (?, ?, ?, ?)';
+    const vendorid = id;
+    const image = productname + 'image';
+
+    db.query(query, [vendorid, productname, price, image], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ success: false, message: 'Failed to add product!' });
+        }
+        res.json({ success: true, message: 'Product added successfully!' });
+    });
+});
+// =========================================================================================
+app.get("/vendoritem/:id1",(req,res)=>{
+    const vendorId = req.params.id1;
+
+    const q = `select username FROM user WHERE userid = ? `;
+    const q1 = `select * from vendor WHERE vendorid = ? `;
+    try{
+        db.query(q,vendorId,(err,result)=>{
+            if (err) {
+                return res.json({ success: false, message: 'Database error. Please try again later.' });
+            }
+            db.query(q1,vendorId,(err,result1)=>{
+                if (err) {
+                    return res.json({ success: false, message: 'Database error. Please try again later.' });
+                }
+                // console.log(result1[0]);
+                res.render("vendor/vendoritem.ejs",{vendorid:vendorId,vendorName:result[0].username,products:result1});
+            })
+        });
+    }catch(error){
+        return res.json({ success: false, message: error});
+    }
+})
+// ==============================================================================
+app.get("/vendorhome",(req,res)=>{
+    const q =`select * from user WHERE status = 'vendor'`;
+    try{
+        db.query(q,(err,result)=>{
+            if (err) {
+                return res.json({ success: false, message: 'Database error. Please try again later.' });
+            }
+            // console.log(result);
+            res.render("vendor/vendorhome.ejs",{vendors:result});
+        });
+    }catch(error){
+        return res.json({ success: false, message: error});
+    }
+});
+
+app.get("/userproduct/:id",(req,res)=>{
+    const vendorId = req.params.id;
+
+    const q = `select username FROM user WHERE userid = ? `;
+    const q1 = `select * from vendor WHERE vendorid = ? `;
+    try{
+        db.query(q,vendorId,(err,result)=>{
+            if (err) {
+                return res.json({ success: false, message: 'Database error. Please try again later.' });
+            }
+            db.query(q1,vendorId,(err,result1)=>{
+                if (err) {
+                    return res.json({ success: false, message: 'Database error. Please try again later.' });
+                }
+                console.log(result1);
+                res.render("user/userproduct.ejs",{vendorid:vendorId,vendorName:result[0].username,products:result1});
+            })
+        });
+    }catch(error){
+        return res.json({ success: false, message: error});
+    }
+})
+app.get("/usercart",(req,res)=>{
+    res.render("user/usercart.ejs");
+})
+app.get("/userhome",(req,res)=>{
+    res.render("user/userhome.ejs");
+})
+app.get("/usercheckout",(req,res)=>{
+    res.render("user/usercheckout.ejs");
+})
+app.get("/usersucess",(req,res)=>{
+    res.render("user/usersucess.ejs");
+})
+
